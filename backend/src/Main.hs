@@ -9,6 +9,7 @@ homepage = serveDirectory EnableBrowsing ["index.html"] "frontend/dist/"
 
 trumpApp :: ServerPart Response
 trumpApp = msum [
+              -- TODO: api route goes here.
               homepage
            ]
 
