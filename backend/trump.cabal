@@ -17,7 +17,7 @@ cabal-version:       >=1.10
 
 library
   ghc-options:        -Wall
-  hs-source-dirs:     src/web
+  hs-source-dirs:     src/trump
   exposed-modules:    Web
   build-depends:      base >=4.8 && <4.9,
                       happstack-server >= 7.4 && <= 7.5,
