@@ -18,7 +18,8 @@ cabal-version:       >=1.10
 library
   ghc-options:        -Wall
   hs-source-dirs:     src/lib
-  exposed-modules:    Trump.Web,
+  exposed-modules:    Trump.DomainModel,
+                      Trump.Web,
                       Trump.Web.App,
                       Trump.Web.Routes,
                       Trump.Web.Api
@@ -26,7 +27,8 @@ library
                       happstack-server >= 7.4 && <= 7.5,
                       blaze-html >= 0.8.1 && <= 0.8.2,
                       blaze-markup >= 0.7.0 && <= 0.7.1,
-                      text >= 1.2.1 && <= 1.2.2
+                      text >= 1.2.1 && <= 1.2.2,
+                      datetime >= 0.3.0 && <= 0.3.1
 
 executable trump
   ghc-options:         -rtsopts -O2
