@@ -6,7 +6,7 @@ import System.IO
 import Data.List
 import Trump.Data
 
-import qualified Trump.Repository as R
+import qualified Trump.Database as DB
 import qualified Trump.Web.App
 
 configuration :: TrumpConfig
@@ -33,14 +33,14 @@ dispatch HomeCommand = [ ("start",  lib Trump.Web.App.start),
                          ("db",     dbActions),
                          ("help",   \_ -> showHelp) ]
 
-dispatch DBCommand = [ ("drop",     lib R.dropDatabase),
-                       ("create",   lib R.createDatabase),
-                       ("migrate",  lib R.migrate),
+dispatch DBCommand = [ ("drop",     lib DB.drop),
+                       ("create",   lib DB.create),
+                       ("migrate",  lib DB.migrate),
                        ("recreate", \_ -> do
-                                            (R.dropDatabase configuration)
-                                            (R.createDatabase configuration)
-                                            (R.migrate configuration) ),
-                       ("console",  lib R.console),
+                                            (DB.drop configuration)
+                                            (DB.create configuration)
+                                            (DB.migrate configuration) ),
+                       ("console",  lib DB.console),
                        ("seed",     \_ -> showHelp) ]
 
 showHelp :: IO ()

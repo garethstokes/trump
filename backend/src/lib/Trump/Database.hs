@@ -1,10 +1,10 @@
-module Trump.Repository (
-  module Trump.Repository.Schema,
+module Trump.Database (
+  module Trump.Database.Schema,
   migrate
 ) where
 
 import Trump.Data
-import Trump.Repository.Schema
+import Trump.Database.Schema
 import Database.HDBC.PostgreSQL
 
 {- 
