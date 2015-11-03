@@ -1,7 +1,7 @@
 module Trump.Web.Api where
 
 import Happstack.Server
-import Trump.DomainModel
+--import Trump.DomainModel
 
 getUsers :: ServerPart Response
 getUsers = ok $ toResponse "get_users: success"
