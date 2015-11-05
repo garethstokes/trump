@@ -7,10 +7,14 @@ import Trump.DomainModel
 
 import qualified Trump.Database.Repository as R
 
+apiOk :: String -> ServerPart Response
+apiOk r = 
+  ok $ (toResponse r) { rsHeaders=(mkHeaders [("Content-Type","application/json")]) }
+
 getUsers :: ServerPart Response
 getUsers = do
   users <- liftIO R.getUserProfiles
-  ok $ toResponse $ "get_users: " ++ show users
+  apiOk $ show users
 
 createUser :: ServerPart Response
 createUser = ok (toResponse "create_user: success")
