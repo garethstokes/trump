@@ -10,7 +10,7 @@ CREATE TABLE user_profile (
   user_profile_id   SERIAL PRIMARY KEY NOT NULL,
   name              VARCHAR(255) NOT NULL,
   email             VARCHAR(1024) NOT NULL,
-  access_token_id   INTEGER NOT NULL,
+  access_token_id   INTEGER NULL,
   date_created      TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() AT TIME ZONE 'utc'),
   date_updated      TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() AT TIME ZONE 'utc'),
 

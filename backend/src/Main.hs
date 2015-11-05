@@ -9,15 +9,6 @@ import Trump.Data
 import qualified Trump.Database as DB
 import qualified Trump.Web.App
 
-configuration :: TrumpConfig
-configuration = 
-  TrumpConfig {
-    port = 1123,
-    rootPath = "/Users/garethstokes/src/trump",
-    environment = Development,
-    databaseHost = "localhost"
-  }
-
 showHeader :: IO ()
 showHeader = do
   putStrLn $ "{ Email Manager: Codename Trump }"

@@ -1,21 +1,9 @@
 module Trump.Database.Schema where
 
-import Data.Char
 import Trump.Data
+import Trump.Database.Connection
 import System.Process
 import Database.HDBC
-
-dbPath :: TrumpConfig -> String
-dbPath config = (rootPath config) ++ "/backend/data/trump_" ++ dbName(config)
-
-dbName :: TrumpConfig -> String
-dbName config = map toLower $ show (environment config)
-
-dbHost :: TrumpConfig -> String
-dbHost config = databaseHost config
-
-dbConnectionString :: TrumpConfig -> String
-dbConnectionString config = "host=" ++ (dbHost config) ++ " dbname=trump_" ++ (dbName config)
 
 -- | Calls out to the system and inits the pg db
 create :: TrumpConfig -> IO ()
@@ -33,8 +21,9 @@ getMigrationSQLFromDisk config = do
   return script
   
 -- | Migrate the tables so the are inline with the code.
-migrateT :: IConnection conn => TrumpConfig -> conn -> IO ()
-migrateT config dbh = do
+migrate :: TrumpConfig -> IO ()
+migrate config = do
+  dbh <- connect $ dbConnectionString config
   script <- (getMigrationSQLFromDisk config)
   _ <- runRaw dbh script
   commit dbh

@@ -10,3 +10,12 @@ data TrumpConfig =
     environment :: TrumpEnvironment,
     databaseHost :: String
   } deriving (Show)
+
+configuration :: TrumpConfig
+configuration = 
+  TrumpConfig {
+    port = 1123,
+    rootPath = "/Users/garethstokes/src/trump",
+    environment = Development,
+    databaseHost = "localhost"
+  }

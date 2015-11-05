@@ -1,10 +1,16 @@
 module Trump.Web.Api where
 
+import Control.Monad.IO.Class
 import Happstack.Server
---import Trump.DomainModel
+import Trump.Data
+import Trump.DomainModel
+
+import qualified Trump.Database.Repository as R
 
 getUsers :: ServerPart Response
-getUsers = ok $ toResponse "get_users: success"
+getUsers = do
+  users <- liftIO R.getUserProfiles
+  ok $ toResponse $ "get_users: " ++ show users
 
 createUser :: ServerPart Response
 createUser = ok (toResponse "create_user: success")
