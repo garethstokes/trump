@@ -38,7 +38,9 @@ library
                       HDBC >= 2.4.0.0 && < 2.5,
                       HDBC-postgresql >= 2.3.0.0 && < 2.4,
                       process,
-                      transformers
+                      transformers,
+                      aeson,
+                      bytestring
 
 executable trump
   ghc-options:         -rtsopts -O2
